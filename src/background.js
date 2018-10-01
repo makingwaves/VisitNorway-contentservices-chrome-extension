@@ -22,8 +22,11 @@ chrome.pageAction.onClicked.addListener(function(activeTab) {
         if (items && items.data) {
 
             var menu = 'document.querySelector("[data-header-btn=' + '\'menu\'' + ']").click();';
+
             chrome.tabs.executeScript(activeTab.id, { code: menu }, function() {}); //toggle menu
+            setTimeout(function() {}, 500);
             chrome.tabs.executeScript(activeTab.id, { code: menu }, function() {}); //close menu
+            setTimeout(function() {}, 500);
 
             if (!chrome.runtime.error) {
                 var languages = items.data.split(";");
@@ -39,6 +42,9 @@ chrome.pageAction.onClicked.addListener(function(activeTab) {
             } else {
                 console.log("Something went wrong.");
             }
-        };
+        } else {
+            //open options
+            chrome.runtime.openOptionsPage();
+        }
     });
 });
