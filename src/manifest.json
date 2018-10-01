@@ -1,0 +1,21 @@
+{
+    "name": "VisitNorwayCS-v1",
+    "version": "1.0",
+    "manifest_version": 2,
+
+    "description": "Language selector",
+
+    "permissions": ["declarativeContent", "storage", "tabs", "activeTab"],
+
+    "page_action": {
+        "default_icon": "icons/favicon-48.png"
+    },
+
+    "background": {
+        "scripts": ["background.js"]
+    },
+
+    "options_ui": {
+        "page": "options.html"
+    }
+}
