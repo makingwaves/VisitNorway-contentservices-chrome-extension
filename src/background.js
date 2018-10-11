@@ -1,24 +1,18 @@
 ﻿chrome.runtime.onInstalled.addListener(function() {
 
-    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-
-
-        chrome.declarativeContent.onPageChanged.addRules([{
-                conditions: [
-                    new chrome.declarativeContent.PageStateMatcher({
-                        pageUrl: { hostContains: 'visitnorway' }
-                    })
-                ],
-                actions: [new chrome.declarativeContent.ShowPageAction()]
-            }
-
-        ]);
+    chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+        console.log("contains " + tab.url.includes('visitnorway'));
+        if (tab.url.includes('visitnorway')) {
+            chrome.pageAction.show(tabId);
+        } else {
+            chrome.pageAction.hide(tabId);
+        }
     });
 });
 
 chrome.pageAction.onClicked.addListener(function(activeTab) {
 
-    chrome.storage.sync.get("data", function(items) {
+    chrome.storage.local.get("data", function(items) {
         if (items && items.data) {
 
             var menu = 'document.querySelector("[data-header-btn=' + '\'menu\'' + ']").click();';

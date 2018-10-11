@@ -1,5 +1,5 @@
 ﻿document.body.onload = function() {  
-  chrome.storage.sync.get("data", function(items) {
+  chrome.storage.local.get("data", function(items) {
     if (!chrome.runtime.error) {
 	  var languages = items.data.split(";");
 	  
@@ -28,7 +28,7 @@ document.getElementById("set").onclick = function() {
   
   selectedLanguages = selectedLanguages.slice(0, -1);
   
-  chrome.storage.sync.set({ "data" : selectedLanguages }, function() {
+  chrome.storage.local.set({ "data" : selectedLanguages }, function() {    
     if (chrome.runtime.error) {
       alert("Something went wrong");
     }
