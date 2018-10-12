@@ -24,11 +24,27 @@ chrome.pageAction.onClicked.addListener(function(activeTab) {
 
             if (!chrome.runtime.error) {
                 var languages = items.data.split(";");
-
+                var postfix = [];
                 for (var i = 0; i < languages.length; i++) {
-                    var x = 'document.getElementsByClassName("language-item locale code_' + languages[i] + '")[0].getElementsByTagName("span")[0].attributes[0].value';
+                    var x = 'document.querySelectorAll("[data-language-site=' + languages[i] 
+                    + ']")[0].getElementsByTagName("span")[0].attributes[0].value';
+
+                    if(languages[i] == 'uk' || languages[i] == 'usa'){
+                        console.log('postifx: ' + '?lang=' + languages[i])
+                        postfix.push('?lang=' + languages[i]);
+                    }                    
+
                     chrome.tabs.executeScript(activeTab.id, { code: x }, function(result) {
-                        chrome.tabs.create({ url: result[0] }, function(newTab) {
+                        var url = result[0];
+
+                        if(url.includes('.com/') && postfix.length > 0){
+                            url += postfix[0];
+                            postfix = postfix.splice(1,1);
+                            console.log('left length: ' + postfix.length);   
+                        }
+
+                        console.log(url);
+                        chrome.tabs.create({ url: url}, function(newTab) {
                             console.log(newTab);
                         });
                     });
@@ -42,3 +58,4 @@ chrome.pageAction.onClicked.addListener(function(activeTab) {
         }
     });
 });
+
