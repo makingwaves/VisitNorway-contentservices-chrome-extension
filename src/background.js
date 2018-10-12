@@ -30,7 +30,6 @@ chrome.pageAction.onClicked.addListener(function(activeTab) {
                     + ']")[0].getElementsByTagName("span")[0].attributes[0].value';
 
                     if(languages[i] == 'uk' || languages[i] == 'usa'){
-                        console.log('postifx: ' + '?lang=' + languages[i])
                         postfix.push('?lang=' + languages[i]);
                     }                    
 
@@ -39,11 +38,9 @@ chrome.pageAction.onClicked.addListener(function(activeTab) {
 
                         if(url.includes('.com/') && postfix.length > 0){
                             url += postfix[0];
-                            postfix = postfix.splice(1,1);
-                            console.log('left length: ' + postfix.length);   
+                            postfix = postfix.splice(1,1); 
                         }
 
-                        console.log(url);
                         chrome.tabs.create({ url: url}, function(newTab) {
                             console.log(newTab);
                         });
