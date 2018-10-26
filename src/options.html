@@ -1,15 +1,18 @@
 ﻿<!DOCTYPE html>
-
 <html>
-
 <head>
     <meta charset="utf-8" />
-
 </head>
-
 <body>
-    <label>Select language(s)</label>
-    <div style="margin-bottom:10px;margin-top:5px; margin-left:10%">
+    <label>Select language(s):</label>
+    <br />
+    <br />
+    <div>
+        <button id="select-all" style="width:100px;margin-right:15px;">Select All</button>
+        <button id="select-none" style="width:100px;">Select None</button>
+    </div>
+    <br />
+    <div style="margin-bottom:10px; margin-left:10%">
         <input class="checkboxesCS" type="checkbox" name="languages" id="primary">International Edition<br>
         <input class="checkboxesCS" type="checkbox" name="languages" id="no">Norway<br>
         <input class="checkboxesCS" type="checkbox" name="languages" id="uk">United Kingdom<br>
@@ -26,8 +29,7 @@
         <input class="checkboxesCS" type="checkbox" name="languages" id="se">Sweden<br>
         <input class="checkboxesCS" type="checkbox" name="languages" id="nl">Netherlands<br>
     </div>
-    <div><button id="set">Save</button></div>
+    <div><button id="set" style="width:100px;">Save</button></div>
     <script src="options.js"></script>
 </body>
-
 </html>
