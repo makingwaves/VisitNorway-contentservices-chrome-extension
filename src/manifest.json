@@ -1,22 +1,22 @@
 {
-  "name": "VisitNorwayCS-v1.1",
-  "version": "1.1",
-  "manifest_version": 2,
-  "description": "Language selector",
-  "permissions": [
-    "storage",
-    "tabs",
-    "activeTab",
-    "http://*/*",
-    "https://*/*"
-  ],
-  "page_action": {
-    "default_icon": "icons/favicon-48.png"
-  },
-  "background": {
-    "scripts": [ "background.js" ]
-  },
-  "options_ui": {
-    "page": "options.html"
-  }
+    "name": "VisitNorwayCS-v1.2",
+    "version": "1.2",
+    "manifest_version": 2,
+    "description": "Language selector",
+    "permissions": [
+        "storage",
+        "tabs",
+        "activeTab",
+        "http://*/*",
+        "https://*/*"
+    ],
+    "page_action": {
+        "default_icon": "icons/favicon-48.png"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "options_ui": {
+        "page": "options.html"
+    }
 }
