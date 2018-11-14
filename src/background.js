@@ -8,6 +8,14 @@
     });
 });
 
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+    if (tab.url.includes('visitnorway')) {
+        chrome.pageAction.show(tabId);
+    } else {
+        chrome.pageAction.hide(tabId);
+    }
+});
+
 chrome.pageAction.onClicked.addListener(function (activeTab) {
     chrome.storage.local.get(['data'], function (items) {
         if (items && items.data && items.data != '') {
